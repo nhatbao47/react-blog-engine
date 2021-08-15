@@ -1,11 +1,12 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useTable } from 'react-table';
 import { TableProps } from './TableProps';
 import './Table.css';
 
 function Table(props: TableProps) {
-    const columns = useMemo(() => props.columns, []);
-    const data = useMemo(() => props.data, []);
+    const columns = props.columns;
+    const data = props.data;
+    const loading = props.loading;
 
     const tableInstance = useTable({
         columns,
@@ -19,6 +20,10 @@ function Table(props: TableProps) {
         rows,
         prepareRow
     } = tableInstance;
+
+    if (loading) {
+        return <h2>Loading...</h2>
+    }
 
     return (
         <table {...getTableProps()}>

@@ -1,4 +1,4 @@
-import { Column } from "../components/Column";
+import { Column } from "../types/Column";
 import Table from "../components/Table";
 
 function Home() {
@@ -25,7 +25,7 @@ function Home() {
     return (
         <>
             <h1>Home</h1>
-            <Table columns={columns} data={data} />    
+            <Table columns={columns} data={data} loading={false} />
         </>
     );
 }

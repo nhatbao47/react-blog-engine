@@ -1,6 +1,7 @@
-import { Column } from "./Column";
+import { Column } from "../types/Column";
 
 export interface TableProps {
     columns: Column[],
-    data: any[]
+    data: any[],
+    loading: boolean
 }
