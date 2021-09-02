@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 import { Column } from '../types/Column';
 import Table from '../components/Table';
 import Pagination from '../components/Pagination';
 import { Category } from '../types/Cateogory';
-import { useAuth } from 'oidc-react';
+//import { useAuth } from 'oidc-react';
 
 function Categories() {
-    const auth = useAuth();
+    //const auth = useAuth();
     const instance = axios.create({
         baseURL: 'https://localhost:44355/api/',
-        headers: {'Authorization': `Bearer ${auth.userData?.access_token}`}
+        //headers: {'Authorization': `Bearer ${auth.userData?.access_token}`}
       });
     const pageSize = 10;
     const [categories, setCategories] = useState<Category[]>([]);
@@ -48,7 +48,7 @@ function Categories() {
     return (
         <div className='container mt-5'>
             <h1>Categories</h1>
-            <Table columns={columns} data={categories} loading={loading} />
+            <Table columns={columns} data={categories} loading={loading} showAction={true} />
             <Pagination total={categories.length} pageSize={pageSize} paginate={onPaginate} />
         </div>
     )
